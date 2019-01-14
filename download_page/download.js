@@ -14,6 +14,10 @@ const downloadPage = (url='http://www.google.com')=>{
             response.on('end',()=>{
                 callback(null,buff)
             })
+            response.on('error',(error)=>{
+                console.log('Some error occurred - ',error.message)
+                callback(error)
+            })
         }).on('error',(error)=>{
             console.error('Get error - ',error.message)
             callback(error)
